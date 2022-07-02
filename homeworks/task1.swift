@@ -14,15 +14,16 @@ struct Services: HomeworkService {
     }
     
     func fibonacci(n: Int) -> [Int] {
-        var fibonacciSequence: [Int] = [0]
-        var a = 1, b = 1, c = 0, d = n
-        while d > 0 {
-            fibonacciSequence.append(a)
-            c = b
-            b += a
-            a = c
-            d -= 1
+        if n == 1 {
+            return [0]
+        } else if n == 2 {
+            return [0, 1]
         }
+
+        var fibonacciSequence: [Int] = fibonacci(n: n - 1)
+        let l = fibonacciSequence.count
+
+        fibonacciSequence.append(fibonacciSequence[l-1] + fibonacciSequence[l-2])
         return fibonacciSequence
     }
 
